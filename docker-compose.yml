@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  aws:
+    image: contino/aws-cli
+    env_file: .env
+    entrypoint: aws
+    working_dir: /opt/app
+    volumes:
+    - ~/.aws:/root/.aws
+    - .:/opt/app:rw
