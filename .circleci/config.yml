@@ -26,6 +26,7 @@ jobs:
 workflows:
   validate-deploy:
     jobs:
+      - validate-template
       - deploy-stack:
           requires:
             - validate-template
