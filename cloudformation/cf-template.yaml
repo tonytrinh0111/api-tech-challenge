@@ -65,7 +65,7 @@ Resources:
           Action:
           - sts:AssumeRole
       ManagedPolicyArns:
-      - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole' # write access to CloudWatch log
+      - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole # write access to CloudWatch log
       - !Ref DynamoDBWritePolicy # write access to Dynamo DB
 
 
@@ -323,9 +323,6 @@ Resources:
       Type: TOKEN
 
 Outputs:
-  BaseURL:
-    Description: Base URL
-    Value: !Sub 'https://${ApiRestApi}.execute-api.${AWS::Region}.amazonaws.com'
   ApiURL:
     Description: API Invoke URL
     Value: !Sub 'https://${ApiRestApi}.execute-api.${AWS::Region}.amazonaws.com/v1/teams'

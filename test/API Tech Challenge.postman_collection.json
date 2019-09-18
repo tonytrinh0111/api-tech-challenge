@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "4c6a35aa-8aca-4dd8-b6b7-710d540c3c05",
+		"name": "API Tech Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API Tech Challenge",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "811b0b89-6249-4434-8c9b-2fdada85ca07",
+						"exec": [
+							"postman.setGlobalVariable('random', Math.random());",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "abc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"team_name\": \"team {{random}}\",\n    \"team_country\": \"AU\",\n    \"team_desc\": \"chipmunks\",\n    \"team_rating\": \"#1\",\n    \"team_type\": \"abc\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				},
+				"description": "Replace url with output from CF deployment"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,47 +1,28 @@
 # API Gateway Challenge
 
-## Background
-A cloud engineer working for Company X created a Cloudformation template to deploy a serverless API
-service which will receive and store data about sports teams into a NoSQL database.
+## Architecture
 
-After deploying the stack, although the AWS Cloudformation stack is successfully created, when the API
-receives a POST request the engineer is facing some issues and data is not being written to the table as
-expected.
+![Simple API with DynamoDB backend](https://docs.aws.amazon.com/apigateway/latest/developerguide/images/custom-auth-workflow.png)
 
-The Cloudformation stack mainly deploys the following AWS resources:
+## Pre-requisite
+* make, docker & docker-compose
+* AWS_PROFILE is configured
 
-|Service        |Description|
-|---------------|-----------|
-|API Gateway    |Handles the http traffic|
-|Role           |Role to be used by Lambda Function|
-|Lambda Function|Extract data from the http request and update the database|
-|DynamoDB Table |NoSQL Database|
+## Validate template
+`make validate`
 
-## Tasks
-Based on this scenario, please work on below tasks:
+## Deploy & undeploy the stack
+`make deploy`
 
-**Main Task**
+`make undeploy`
 
-- Make the necessary changes so data is successfully written to the DynamoDB Table once a
-POST request is received by the API Gateway.
 
-**Secondary Task**
+## Testing
+* Run `make get_url` to get the Invoke URL
+* Use Postman collection at  "./test/API Tech Challenge.postman_collection.json"
+    * replace url with the Invoke URL
+    * make sure that an item is insert in `auth_token` DynamoDB table and use that item's value as auth token header
 
-Pick one of following:
-- Add any required resources to send a message to a SNS Topic whenever a new item is added to
-the DynamoDB Table.
-    - The message can be either table updated or the content of the new item added.
-    
-OR
-
-- Implement any type of authentication to the API Gateway.
-
-## Deliverables:
-- Share your code with us through your own git repository. Remember to make your repository
-public so we can review it.
-- Consider security on all pieces of your work.
-- Make sure that all resources required by your stack are included on the deployment process.
-- Include a README with details on how to run your code. Add a section with recommended
-improvements for this stack.
-- On the same README file, include a section with recommended improvements to be done on
-the stack/repo that you consider important.
+## To-Do list
+- Convert to SAM
+- Unit Test
